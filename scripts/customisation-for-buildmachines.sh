@@ -6,10 +6,14 @@ SSHD_CONFIG="/etc/ssh/sshd_config"
 
 if [ "$CUSTOMISE_FOR_BUILDMACHINE" == "1" ]
 then
+    echo "Changing vagrant user's password"
+    echo "vagrant:$VAGRANT_USER_FINAL_PASSWORD" | chpasswd
+
     echo "Setting up allowed ssh keys for vagrant user on VMWare buildmachines"
     # only allow the following users in
+    rm -f $HOME_DIR/.ssh/authorized_keys
     # Build provisioner from vagrant
-    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSntcOn/0/zXMcLvp1Kt857Oq5aZ79LTqKpEdenQqr4KiD03KRx0Oxej+S/4w+gUsStEPHb/nzgM8PKEzIYK2jXbPiSeQfl9/6iZHEgX2+Tz6tLVLgAkNS92p8bSo+UStICSW5oHv3V3REixRRMTujX4iMpfcy48mJPf3YFr2aNBw/arH8TNERpuSXBAmYqGooA/UeR5dXnRZWYl5gZMb6Ncvb1POtLdP5A5IyGRAh0yHn51CEi4VrT5TDYkkgazu3oVRkxcPIHl+F/N/nUAR51e4dMygwtZAbDyPqfRD0R+wQNoSvsL1EU2HSq7iq4NEbBLdC1er0qztukGcPWPVB CCDC build machines ssh key 20200124" > $HOME_DIR/.ssh/authorized_keys
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSntcOn/0/zXMcLvp1Kt857Oq5aZ79LTqKpEdenQqr4KiD03KRx0Oxej+S/4w+gUsStEPHb/nzgM8PKEzIYK2jXbPiSeQfl9/6iZHEgX2+Tz6tLVLgAkNS92p8bSo+UStICSW5oHv3V3REixRRMTujX4iMpfcy48mJPf3YFr2aNBw/arH8TNERpuSXBAmYqGooA/UeR5dXnRZWYl5gZMb6Ncvb1POtLdP5A5IyGRAh0yHn51CEi4VrT5TDYkkgazu3oVRkxcPIHl+F/N/nUAR51e4dMygwtZAbDyPqfRD0R+wQNoSvsL1EU2HSq7iq4NEbBLdC1er0qztukGcPWPVB CCDC build machines ssh key 20200124" >> $HOME_DIR/.ssh/authorized_keys
     # Claudio
     echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvG3aLzNKik2paExUWMH1p+fvrg9gw4Y4oNLYdnMIdrOqQtBhgvHVkXPCCrEcI+sCA0DzDy97J0m1Ucg8VVbyegXPpglAFES2VM+zzSr0O0fNWuBVE4vnLAWhlnhXhQ4jozG9Ig41mBPzFss0MVGqm4wS0IMpCV1LXDdf4jXVDKkUU/J65it7gKyrK1+d+DNECyfVtgbFfJ6PoeShQy7QtKooOnCLgOQDkfDE0RlhqNezw45dM5hzzjHEd0MLBHLmU2Tvu3ThNMGAYeCTJFBZh5Vwl/AzyjlyycfQhRU5a3jcWbR8el868dC+oEuj0bS/uasGR9IPOBWAhu6LX4hYj cbantaloukas@sys02" >> $HOME_DIR/.ssh/authorized_keys
     # Simon B.

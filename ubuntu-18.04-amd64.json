@@ -265,6 +265,7 @@
   "provisioners": [
     {
       "environment_vars": [
+        "VAGRANT_USER_FINAL_PASSWORD={{user `vagrant_user_final_password`}}",
         "CUSTOMISE_FOR_BUILDMACHINE={{user `customise_for_buildmachine`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -316,6 +317,7 @@
     "preseed_path": "preseed.cfg",
     "template": "ubuntu-18.04-amd64",
     "version": "TIMESTAMP",
+    "vagrant_user_final_password": "{{env `VAGRANT_USER_FINAL_PASSWORD`}}",
     "vmware_center_host": "{{env `VMWARECENTER_HOST`}}",
     "vmware_center_vm_name": "{{env `VMWARECENTER_VM_NAME`}}",
     "vmware_center_cluster_name": "{{env `VMWARECENTER_CLUSTER_NAME`}}",
@@ -328,6 +330,7 @@
     "vmware_center_password": "{{env `VMWARECENTER_PASSWORD`}}"
   },
   "sensitive-variables": [
-    "vmware_center_password"
+    "vmware_center_password",
+    "vagrant_user_final_password"
   ]
 }

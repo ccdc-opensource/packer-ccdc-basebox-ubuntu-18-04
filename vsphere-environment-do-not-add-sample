@@ -19,3 +19,5 @@ export VMWARECENTER_VM_FOLDER=""
 export VMWARECENTER_USERNAME=""
 # The password used to access vSphere
 export VMWARECENTER_PASSWORD=''
+# The password for the vagrant user on deployed VMs
+export VAGRANT_USER_FINAL_PASSWORD=''
