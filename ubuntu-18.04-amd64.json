@@ -264,6 +264,7 @@
   "provisioners": [
     {
       "environment_vars": [
+        "CUSTOMISE_FOR_BUILDMACHINE={{user `customise_for_buildmachine`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
@@ -282,6 +283,7 @@
         "{{template_dir}}/scripts/vmware.sh",
         "{{template_dir}}/scripts/parallels.sh",
         "{{template_dir}}/scripts/hyperv.sh",
+        "{{template_dir}}/scripts/customisation-for-buildmachines.sh",
         "{{template_dir}}/scripts/cleanup.sh",
         "{{template_dir}}/scripts/minimize.sh"
       ],
@@ -312,6 +314,19 @@
     "no_proxy": "{{env `no_proxy`}}",
     "preseed_path": "preseed.cfg",
     "template": "ubuntu-18.04-amd64",
-    "version": "TIMESTAMP"
-  }
+    "version": "TIMESTAMP",
+    "vmware_center_host": "{{env `VMWARECENTER_HOST`}}",
+    "vmware_center_vm_name": "{{env `VMWARECENTER_VM_NAME`}}",
+    "vmware_center_cluster_name": "{{env `VMWARECENTER_CLUSTER_NAME`}}",
+    "vmware_center_datacenter": "{{env `VMWARECENTER_DATACENTER`}}",
+    "vmware_center_esxi_host": "{{env `VMWARECENTER_ESXI_HOST`}}",
+    "vmware_center_datastore": "{{env `VMWARECENTER_DATASTORE`}}",
+    "vmware_center_vm_network": "{{env `VMWARECENTER_VM_NETWORK`}}",
+    "vmware_center_vm_folder": "{{env `VMWARECENTER_VM_FOLDER`}}",
+    "vmware_center_username": "{{env `VMWARECENTER_USERNAME`}}",
+    "vmware_center_password": "{{env `VMWARECENTER_PASSWORD`}}"
+  },
+  "sensitive-variables": [
+    "vmware_center_password"
+  ]
 }
