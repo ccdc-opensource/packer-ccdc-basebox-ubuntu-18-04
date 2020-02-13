@@ -231,7 +231,35 @@
     {
       "output": "{{ user `build_directory` }}/{{user `box_basename`}}.{{.Provider}}.box",
       "type": "vagrant"
-    }
+    },
+    [
+      {
+        "type": "vsphere",
+        "host": "{{user `vmware_center_host`}}",
+        "vm_name": "{{user `vmware_center_vm_name`}}",
+        "cluster": "{{user `vmware_center_cluster_name`}}",
+        "datacenter": "{{user `vmware_center_datacenter`}}",
+        "esxi_host": "{{user `vmware_center_esxi_host`}}",
+        "datastore": "{{user `vmware_center_datastore`}}",
+        "disk_mode": "thin",
+        "keep_input_artifact": true,
+        "vm_network": "{{user `vmware_center_vm_network`}}",
+        "vm_folder": "{{user `vmware_center_vm_folder`}}",
+        "overwrite": true,
+        "insecure": true,
+        "username": "{{user `vmware_center_username`}}",
+        "password": "{{user `vmware_center_password`}}"
+      },
+      {
+        "type": "vsphere-template",
+        "host": "{{user `vmware_center_host`}}",
+        "insecure": true,
+        "username": "{{user `vmware_center_username`}}",
+        "password": "{{user `vmware_center_password`}}",
+        "datacenter": "{{user `vmware_center_datacenter`}}",
+        "folder": "/packer-templates/os/ubuntu-18.04"
+      }
+    ]
   ],
   "provisioners": [
     {
