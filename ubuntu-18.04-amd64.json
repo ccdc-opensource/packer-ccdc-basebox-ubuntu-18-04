@@ -94,6 +94,7 @@
       "vm_name": "{{ user `template` }}",
       "memory": "{{ user `memory` }}",
       "cpus": "{{ user `cpus` }}",
+      "network_adapter_type": "VMXNET3",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
         "ethernet0.pciSlotNumber": "32",
