@@ -3,6 +3,12 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 pushd $DIR
 
+if [[ "$( grep Microsoft /proc/version )" ]]; then
+  PACKER="packer.exe"
+else
+  PACKER="packer"
+fi
+
 if [[ ! -e ./vsphere-environment-do-not-add ]]
 then
   echo "Please add a vsphere-environment-do-not-add file to set up the environment variables required to deploy"
@@ -16,7 +22,7 @@ mkdir -p output
 rm -rf ./output/packer-ubuntu-18.04-amd64-vmware
 
 echo 'building base images'
-packer build \
+$PACKER build \
   -only=vmware-iso \
   -except=vagrant \
   -var 'customise_for_buildmachine=1' \
