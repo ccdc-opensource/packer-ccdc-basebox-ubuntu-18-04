@@ -1,10 +1,12 @@
-#!/bin/sh -eux
+#!/bin/bash -eux
 
 # set a default HOME_DIR environment variable if not set
 HOME_DIR="${HOME_DIR:-/home/vagrant}";
 SSHD_CONFIG="/etc/ssh/sshd_config"
 
-if [ "$CUSTOMISE_FOR_BUILDMACHINE" == "1" ]
+# this syntax is dash specific
+# See https://www.linuxquestions.org/questions/linux-newbie-8/bash-script-unexpected-operator-4175497349/
+if [ $CUSTOMISE_FOR_BUILDMACHINE = 1 ] 
 then
     echo "Changing vagrant user's password"
     echo "vagrant:$VAGRANT_USER_FINAL_PASSWORD" | chpasswd
