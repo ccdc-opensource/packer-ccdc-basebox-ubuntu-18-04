@@ -12,6 +12,7 @@ then
     echo "vagrant:$VAGRANT_USER_FINAL_PASSWORD" | chpasswd
 
     echo "Setting up allowed ssh keys for vagrant user on VMWare buildmachines"
+    mkdir -p $HOME_DIR/.ssh
     # only allow the following users in
     rm -f $HOME_DIR/.ssh/authorized_keys
     # Build provisioner from vagrant
